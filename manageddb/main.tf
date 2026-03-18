@@ -1,7 +1,3 @@
-provider "google" {
-  project = var.project
-}
-
 resource "google_sql_database_instance" "postgres" {
   name             = var.instance_name
   project          = var.project

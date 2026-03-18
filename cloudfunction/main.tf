@@ -1,7 +1,3 @@
-provider "google" {
-  project = var.project
-}
-
 resource "google_cloudfunctions_function" "function" {
   name                  = var.function_name
   project               = var.project
