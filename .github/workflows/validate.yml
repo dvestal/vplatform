@@ -1,0 +1,33 @@
+name: Validate Modules
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    name: "${{ matrix.module }}"
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - cloudfunction
+          - manageddb
+          - objectstorage
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.module }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+
+      - name: terraform init
+        run: terraform init -backend=false
+
+      - name: terraform validate
+        run: terraform validate
