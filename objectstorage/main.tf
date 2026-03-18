@@ -1,3 +1,7 @@
+provider "google" {
+  project = var.project
+}
+
 resource "google_storage_bucket" "object" {
   name          = var.bucket_name
   location      = var.location
