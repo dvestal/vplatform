@@ -2,6 +2,8 @@ name: Validate Modules
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -13,9 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         module:
-          - cloudfunction
-          - manageddb
-          - objectstorage
+          - modules/cloudfunction/v0.0.1
+          - modules/manageddb/v0.0.1
+          - modules/objectstorage/v0.0.1
+          - applications/poseidon/v0.0.1
+          - applications/zeus/v0.0.1
 
     defaults:
       run:
